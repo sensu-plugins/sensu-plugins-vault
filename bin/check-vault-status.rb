@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 #
 # check-vault-status
-# 
+#
 # DESCRIPTION:
 #   This plugins checks if vault is up & reachable. It then checks
 #   if the vault is unsealed
@@ -20,45 +20,41 @@ require 'sensu-plugin/check/cli'
 require 'vault'
 
 class VaultStatus < Sensu::Plugin::Check::CLI
-
   option :host,
-    description: 'vault host',
-    short: '-h HOST',
-    long:  '--host HOST',
-    default: '127.0.0.1'
-
+         description: 'vault host',
+         short: '-h HOST',
+         long:  '--host HOST',
+         default: '127.0.0.1'
 
   option :port,
-    description: 'vault port',
-    short: '-p PORT',
-    long: '--port PORT',
-    default: '8200'
+         description: 'vault port',
+         short: '-p PORT',
+         long: '--port PORT',
+         default: '8200'
 
   option :scheme,
-    description: 'vault http scheme',
-    short: '-s SCHEME',
-    long: '--scheme SCHEME',
-    default: 'https'
+         description: 'vault http scheme',
+         short: '-s SCHEME',
+         long: '--scheme SCHEME',
+         default: 'https'
 
   option :insecure,
-    description: 'Allow insecure connections',
-    short: '-k',
-    boolean: true,
-    default: false
+         description: 'Allow insecure connections',
+         short: '-k',
+         boolean: true,
+         default: false
 
   option :timeout,
-    description: 'Timeout on connections to vault',
-    short: '-t TIMEOUT',
-    long: '--timeout TIMEOUT',
-    default: 10
+         description: 'Timeout on connections to vault',
+         short: '-t TIMEOUT',
+         long: '--timeout TIMEOUT',
+         default: 10
 
   option :ssl_cert,
-    description: 'Path to PEM encoded SSL cert',
-    long: '--ssl-cert CERT'
-
+         description: 'Path to PEM encoded SSL cert',
+         long: '--ssl-cert CERT'
 
   def run
-
     # set the vault address
     Vault.address = "#{config[:scheme]}://#{config[:host]}:#{config[:port]}"
 
@@ -75,12 +71,10 @@ class VaultStatus < Sensu::Plugin::Check::CLI
       if Vault.sys.seal_status.sealed? == true
         critical "Vault is up, but it's sealed"
       else
-        ok "Vault is up and unsealed"
+        ok 'Vault is up and unsealed'
       end
     rescue => ex
-       critical ex
+      critical ex
     end
-
   end
-
 end
