@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 #
-# check-vault-status
+# check-vault-sealed
 #
 # DESCRIPTION:
 #   This plugins checks if vault is up & reachable. It then checks
@@ -19,7 +19,7 @@
 require 'sensu-plugin/check/cli'
 require 'vault'
 
-class VaultStatus < Sensu::Plugin::Check::CLI
+class VaultSealed < Sensu::Plugin::Check::CLI
   option :host,
          description: 'vault host',
          short: '-h HOST',
