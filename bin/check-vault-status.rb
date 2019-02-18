@@ -37,7 +37,8 @@ class VaultStatus < Sensu::Plugin::Check::CLI
          short: '-s SCHEME',
          long: '--scheme SCHEME',
          default: 'https'
-
+         default: 'https',
+         in: %w(https http)
   option :insecure,
          description: 'Allow insecure connections',
          short: '-k',
