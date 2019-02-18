@@ -30,15 +30,17 @@ class VaultStatus < Sensu::Plugin::Check::CLI
          description: 'vault port',
          short: '-p PORT',
          long: '--port PORT',
-         default: '8200'
+         default: 8200,
+         proc: proc(&:to_i)
 
-  option :scheme,
+  option :protocol,
          description: 'vault http scheme',
          short: '-s SCHEME',
          long: '--scheme SCHEME',
          default: 'https'
          default: 'https',
          in: %w(https http)
+
   option :insecure,
          description: 'Allow insecure connections',
          short: '-k',
