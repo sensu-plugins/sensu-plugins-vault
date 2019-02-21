@@ -1,4 +1,6 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: false
+
 #
 # check-vault-sealed
 #
@@ -37,9 +39,8 @@ class VaultSealed < Sensu::Plugin::Check::CLI
          description: 'vault http scheme',
          short: '-s SCHEME',
          long: '--scheme SCHEME',
-         default: 'https'
          default: 'https',
-         in: %w(https http)
+         in: %w[https http]
 
   option :insecure,
          description: 'Allow insecure connections',
