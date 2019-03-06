@@ -60,7 +60,7 @@ class VaultSealed < Sensu::Plugin::Check::CLI
 
   def run
     # set the vault address
-    Vault.address = "#{config[:scheme]}://#{config[:host]}:#{config[:port]}"
+    Vault.address = "#{config[:protocol]}://#{config[:host]}:#{config[:port]}"
 
     # Allow insecure SSL
     Vault.ssl_verify = false if config[:insecure]
