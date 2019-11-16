@@ -18,11 +18,13 @@ notifications:
     - sensu-plugin@sensu-plugins.io
     on_success: change
     on_failure: always
+before_deploy:
+- git clone https://github.com/sensu/sensu-go-bonsai-asset.git --branch feature/ruby-plugin-assets bonsai
 script:
 - gem build sensu-plugins-vault.gemspec
 - gem install sensu-plugins-vault*.gem
 - bundle exec rake quick
-- bundle exec rake kitchen:ruby-`echo $TRAVIS_RUBY_VERSION | sed -e "s/\.//g"`-debian-8
+#- bundle exec rake kitchen:ruby-`echo $TRAVIS_RUBY_VERSION | sed -e "s/\.//g"`-debian-8
 deploy:
   provider: rubygems
   api_key:
@@ -33,3 +35,10 @@ deploy:
     all_branches: true
     rvm: 2.4.1
     repo: sensu-plugins/sensu-plugins-skel
+  provider: script
+  script: bonsai/ruby-runtime/travis-build-ruby-plugin-assets.sh sensu-plugins-vault
+  skip_cleanup: true
+  on:
+    tags: true
+    all_branches: true
+    rvm: 2.4.1

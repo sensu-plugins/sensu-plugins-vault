@@ -5,6 +5,13 @@ This CHANGELOG follows the format located [here](https://github.com/sensu-plugin
 
 ## [Unreleased]
 
+## [0.0.3] - 2019-11-15
+### Added
+- Configuration for Sensu GO Bonsai asset creation
+
+### Changed
+- Comment out non-functioning rake task for debian-8 to allow asset creation
+
 ## [0.0.2] - 2019-03-26
 ### Fixed
 - check-vault-sealed.rb: use the right arg for controlling the protocol (@kratkyzobak)
