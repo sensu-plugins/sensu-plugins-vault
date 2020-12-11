@@ -32,7 +32,7 @@ Gem::Specification.new do |s| # rubocop:disable Metrics/BlockLength
   s.add_runtime_dependency 'sensu-plugin', '~> 4.0'
   s.add_runtime_dependency 'vault', '~> 0.12.0'
 
-  s.add_development_dependency 'bundler',                   '~> 1.15'
+  s.add_development_dependency 'bundler',                   '~> 2.2'
   s.add_development_dependency 'github-markup',             '~> 1.3'
   s.add_development_dependency 'kitchen-docker',            '~> 2.6'
   s.add_development_dependency 'kitchen-localhost',         '~> 0.3'
